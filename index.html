@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="AI Study Assistant - A personal dashboard for tracking study progress."
+    >
+
+    <title>AI Study Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🧠</div>
+            <div>
+                <h2>StudyAI</h2>
+                <span>Study Assistant</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="#dashboard" class="nav-item active">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a href="#vocabulary" class="nav-item">
+                <span>📚</span>
+                Vocabulary
+            </a>
+
+            <a href="#quiz" class="nav-item">
+                <span>📝</span>
+                Quiz
+            </a>
+
+            <a href="#timer" class="nav-item">
+                <span>⏱️</span>
+                Study Timer
+            </a>
+
+            <a href="#progress" class="nav-item">
+                <span>📈</span>
+                Progress
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button id="themeToggle" class="sidebar-button">
+                🌙 Dark Mode
+            </button>
+
+            <div class="student-card">
+                <div class="avatar">A</div>
+
+                <div>
+                    <strong>Abror</strong>
+                    <span>Student</span>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+                <p class="welcome-text">Welcome back 👋</p>
+                <h1>Study Dashboard</h1>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="notification-button" title="Notifications">
+                    🔔
+                </button>
+
+                <div class="profile">
+                    <div class="avatar">A</div>
+
+                    <div>
+                        <strong>Abror</strong>
+                        <span>Student</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             DASHBOARD
+        ========================== -->
+
+        <section id="dashboard" class="dashboard-section">
+
+            <!-- Progress Banner -->
+
+            <div class="hero-card">
+
+                <div class="hero-content">
+
+                    <span class="hero-label">TODAY'S PROGRESS</span>
+
+                    <h2>Keep going, you're doing great! 🚀</h2>
+
+                    <p>
+                        Stay consistent and reach your study goals
+                        one step at a time.
+                    </p>
+
+                    <button class="primary-button" onclick="startStudySession()">
+                        Start Studying →
+                    </button>
+
+                </div>
+
+                <div class="progress-circle">
+
+                    <div class="circle-inner">
+                        <strong id="overallProgress">80%</strong>
+                        <span>Complete</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 STATISTICS
+            ========================== -->
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">OVERVIEW</span>
+                    <h2>Your Statistics</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <!-- Vocabulary -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon vocabulary-icon">
+                        📚
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Vocabulary</span>
+
+                        <strong id="vocabularyCount">
+                            24
+                        </strong>
+
+                        <small>
+                            words learned
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Quiz -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon quiz-icon">
+                        📝
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Quizzes</span>
+
+                        <strong id="quizCount">
+                            3
+                        </strong>
+
+                        <small>
+                            completed
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Study Time -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon time-icon">
+                        ⏱️
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Study Time</span>
+
+                        <strong id="studyTime">
+                            2h 35m
+                        </strong>
+
+                        <small>
+                            today
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Streak -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon streak-icon">
+                        🔥
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>Study Streak</span>
+
+                        <strong id="studyStreak">
+                            7 days
+                        </strong>
+
+                        <small>
+                            keep it going!
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 TWO COLUMN SECTION
+            ========================== -->
+
+            <div class="content-grid">
+
+
+                <!-- DAILY GOALS -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="section-label">
+                                TODAY
+                            </span>
+
+                            <h2>Daily Goals</h2>
+                        </div>
+
+                        <span class="goal-counter">
+                            <span id="completedGoals">2</span>/4
+                        </span>
+
+                    </div>
+
+
+                    <div class="goals-list">
+
+
+                        <!-- Goal 1 -->
+
+                        <div class="goal-item completed">
+
+                            <button
+                                class="check-button"
+                                onclick="toggleGoal(this)"
+                            >
+                                ✓
+                            </button>
+
+                            <div class="goal-content">
+
+                                <strong>
+                                    Learn 30 vocabulary words
+                                </strong>
+
+                                <span>
+                                    English
+                                </span>
+
+                            </div>
+
+                            <span class="goal-status">
+                                Done
+                            </span>
+
+                        </div>
+
+
+                        <!-- Goal 2 -->
+
+                        <div class="goal-item completed">
+
+                            <button
+                                class="check-button"
+                                onclick="toggleGoal(this)"
+                            >
+                                ✓
+                            </button>
+
+                            <div class="goal-content">
+
+                                <strong>
+                                    Complete a reading passage
+                                </strong>
+
+                                <span>
+                                    IELTS Reading
+                                </span>
+
+                            </div>
+
+                            <span class="goal-status">
+                                Done
+                            </span>
+
+                        </div>
+
+
+                        <!-- Goal 3 -->
+
+                        <div class="goal-item">
+
+                            <button
+                                class="check-button"
+                                onclick="toggleGoal(this)"
+                            >
+                                ○
+                            </button>
+
+                            <div class="goal-content">
+
+                                <strong>
+                                    Practice listening
+                                </strong>
+
+                                <span>
+                                    30 minutes
+                                </span>
+
+                            </div>
+
+                            <span class="goal-status">
+                                Pending
+                            </span>
+
+                        </div>
+
+
+                        <!-- Goal 4 -->
+
+                        <div class="goal-item">
+
+                            <button
+                                class="check-button"
+                                onclick="toggleGoal(this)"
+                            >
+                                ○
+                            </button>
+
+                            <div class="goal-content">
+
+                                <strong>
+                                    Write one essay
+                                </strong>
+
+                                <span>
+                                    IELTS Writing
+                                </span>
+
+                            </div>
+
+                            <span class="goal-status">
+                                Pending
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="section-label">
+                                QUICK ACTIONS
+                            </span>
+
+                            <h2>What do you want to do?</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+
+                        <button
+                            class="quick-action"
+                            onclick="openVocabulary()"
+                        >
+
+                            <div class="quick-icon">
+                                📖
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Add Vocabulary
+                                </strong>
+
+                                <span>
+                                    Save a new word
+                                </span>
+                            </div>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="quick-action"
+                            onclick="startQuiz()"
+                        >
+
+                            <div class="quick-icon">
+                                🧠
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Take a Quiz
+                                </strong>
+
+                                <span>
+                                    Test your knowledge
+                                </span>
+                            </div>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="quick-action"
+                            onclick="startStudySession()"
+                        >
+
+                            <div class="quick-icon">
+                                ⏰
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Start Timer
+                                </strong>
+
+                                <span>
+                                    Focus on your studies
+                                </span>
+                            </div>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 RECENT ACTIVITY
+            ========================== -->
+
+            <div class="dashboard-card activity-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="section-label">
+                            ACTIVITY
+                        </span>
+
+                        <h2>Recent Activity</h2>
+                    </div>
+
+                    <button class="text-button">
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div class="activity-list">
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            📚
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Added new vocabulary
+                            </strong>
+
+                            <span>
+                                8 new English words
+                            </span>
+
+                        </div>
+
+                        <time>
+                            10 min ago
+                        </time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            📝
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Completed IELTS Quiz
+                            </strong>
+
+                            <span>
+                                Score: 8/10
+                            </span>
+
+                        </div>
+
+                        <time>
+                            1 hour ago
+                        </time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ⏱️
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Study session completed
+                            </strong>
+
+                            <span>
+                                45 minutes
+                            </span>
+
+                        </div>
+
+                        <time>
+                            2 hours ago
+                        </time>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 MOTIVATION
+            ========================== -->
+
+            <div class="motivation-card">
+
+                <div class="motivation-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <span class="section-label">
+                        DAILY MOTIVATION
+                    </span>
+
+                    <h2>
+                        Consistency beats intensity.
+                    </h2>
+
+                    <p>
+                        Small progress every day leads to
+                        remarkable results over time.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             VOCABULARY SECTION
+        ========================== -->
+
+        <section id="vocabulary" class="hidden-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        VOCABULARY
+                    </span>
+
+                    <h2>Vocabulary Tracker</h2>
+                </div>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        id="wordInput"
+                        placeholder="Enter a new English word..."
+                    >
+
+                    <input
+                        type="text"
+                        id="meaningInput"
+                        placeholder="Meaning..."
+                    >
+
+                    <button
+                        class="primary-button"
+                        onclick="addVocabulary()"
+                    >
+                        + Add Word
+                    </button>
+
+                </div>
+
+                <div id="vocabularyList" class="vocabulary-list">
+                    <!-- Words will be added by JavaScript -->
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUIZ SECTION
+        ========================== -->
+
+        <section id="quiz" class="hidden-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        PRACTICE
+                    </span>
+
+                    <h2>Vocabulary Quiz</h2>
+                </div>
+
+            </div>
+
+            <div class="quiz-card">
+
+                <span class="quiz-number">
+                    Question <span id="questionNumber">1</span>/5
+                </span>
+
+                <h2 id="questionText">
+                    What does "establish" mean?
+                </h2>
+
+                <div id="quizOptions" class="quiz-options">
+
+                    <button onclick="checkAnswer(this, false)">
+                        To destroy
+                    </button>
+
+                    <button onclick="checkAnswer(this, true)">
+                        To create or set up
+                    </button>
+
+                    <button onclick="checkAnswer(this, false)">
+                        To forget
+                    </button>
+
+                    <button onclick="checkAnswer(this, false)">
+                        To reduce
+                    </button>
+
+                </div>
+
+                <div id="quizResult" class="quiz-result"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TIMER SECTION
+        ========================== -->
+
+        <section id="timer" class="hidden-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        FOCUS
+                    </span>
+
+                    <h2>Study Timer</h2>
+                </div>
+
+            </div>
+
+            <div class="timer-card">
+
+                <span class="timer-label">
+                    FOCUS SESSION
+                </span>
+
+                <div id="timerDisplay">
+                    25:00
+                </div>
+
+                <div class="timer-controls">
+
+                    <button
+                        class="primary-button"
+                        onclick="startTimer()"
+                    >
+                        ▶ Start
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        onclick="pauseTimer()"
+                    >
+                        ⏸ Pause
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        onclick="resetTimer()"
+                    >
+                        ↻ Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROGRESS SECTION
+        ========================== -->
+
+        <section id="progress" class="hidden-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        ANALYTICS
+                    </span>
+
+                    <h2>Your Progress</h2>
+                </div>
+
+            </div>
+
+            <div class="progress-grid">
+
+                <div class="dashboard-card">
+
+                    <h3>Weekly Progress</h3>
+
+                    <div class="chart">
+
+                        <div class="bar" style="height: 50%;">
+                            <span>Mon</span>
+                        </div>
+
+                        <div class="bar" style="height: 70%;">
+                            <span>Tue</span>
+                        </div>
+
+                        <div class="bar" style="height: 45%;">
+                            <span>Wed</span>
+                        </div>
+
+                        <div class="bar" style="height: 85%;">
+                            <span>Thu</span>
+                        </div>
+
+                        <div class="bar" style="height: 65%;">
+                            <span>Fri</span>
+                        </div>
+
+                        <div class="bar" style="height: 90%;">
+                            <span>Sat</span>
+                        </div>
+
+                        <div class="bar" style="height: 80%;">
+                            <span>Sun</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer class="footer">
+
+            <p>
+                © 2026 StudyAI · Built with HTML, CSS & JavaScript
+            </p>
+
+            <span>
+                Keep learning. Keep growing. 🚀
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
